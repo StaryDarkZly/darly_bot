@@ -1,21 +1,19 @@
 import requests
 import re
 
-
-
 def get_info(id):
     "Obtener informacion de los jugadores del clan"
 
     url = ("https://www.clashofstats.com/es/players/")
     html = requests.get(url + id + "/summary", timeout=10)
     html = (html.text)
-    
+
     #Get Nickname
     nickname = re.findall(r'<title>.*?Clash of Clans - Resumen</title', html)
     nickname = str(nickname)
     basura = ["['<title>", "de Clash of Clans - Resumen</title']", 'class="num-val">', "</span>"]
-    
-    
+
+
     for delete in basura:
         nickname = nickname.replace(delete, "")
 
@@ -32,7 +30,7 @@ def list_members():
     url = ("https://www.clashofstats.com/es/clans/valientes-CLJGPRPV/members/")
     html = requests.get(url, timeout=10)
     html = (html.text)
-    
+
     #Get member list
     memberlist = re.findall(r'r-val__text"><div>.*?</div><div', html)
 
@@ -52,3 +50,6 @@ def list_members():
     texto = ("Los miembros actuales del clan son: \n\n" + texto)
     return texto
 
+def help():
+    help = ("""Bot creado por: StaryDark \nTelegram: t.me/Dark_zly """)
+    return help
