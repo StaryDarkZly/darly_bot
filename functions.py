@@ -1,13 +1,13 @@
-import requests
-import re
+import requests, re
 
 def get_info(id):
-    "Obtener informacion de los jugadores del clan"
-
+    """Obtener informacion de los jugadores del clan"""
     url = ("https://www.clashofstats.com/es/players/")
-    html = requests.get(url + id + "/summary", timeout=10)
-    html = (html.text)
-
+    try:
+        html = requests.get(url + id + "/summary", timeout=10)
+        html = (html.text)
+    except:
+        return "Clash of Stats no disponible..."
     #Get Nickname
     nickname = re.findall(r'<title>.*?Clash of Clans - Resumen</title', html)
     nickname = str(nickname)
@@ -23,12 +23,18 @@ def get_info(id):
         for delete in basura:
             dato = dato.replace(delete, "")
         datos2.append(dato)
-    info = (f"Nickname: {nickname}\nID: #{id}\nPuesto: {datos2[4]}\nClan: {datos2[3]}\nPais: {datos2[2]}\nTH principal: {datos2[0]}\nTH Oscuro: {datos2[1]} ")
+    info = (f"**Nickname:** {nickname}\nID: #{id}\n**Puesto:** {datos2[4]}\n**Clan:** {datos2[3]}\n**Pais:** {datos2[2]}\n**TH principal:** {datos2[0]}\n**TH Oscuro:** {datos2[1]} ")
     return info
 
+
+
 def list_members():
-    url = ("https://www.clashofstats.com/es/clans/valientes-CLJGPRPV/members/")
-    html = requests.get(url, timeout=10)
+    """Obtener la lista de miembros del clan valientes"""
+    try:
+        url = ("https://www.clashofstats.com/es/clans/valientes-CLJGPRPV/members/")
+        html = requests.get(url, timeout=10)
+    except:
+        return "Clasf of Stats no esta disponible..."
     html = (html.text)
 
     #Get member list
@@ -51,5 +57,5 @@ def list_members():
     return texto
 
 def help():
-    help = ("""Bot creado por: StaryDark \nTelegram: t.me/Dark_zly """)
+    help = ("**Create by:** StaryDark __(Telegram:t.me/Dark_zly)__ \n**Version:** 1.2")
     return help
