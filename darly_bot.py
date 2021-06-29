@@ -1,4 +1,4 @@
-#version:1.0 by StaryDark
+#version:1.2 by StaryDark
 
 from telegram.ext import Updater, CommandHandler, Filters
 import functions
