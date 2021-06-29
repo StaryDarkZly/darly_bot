@@ -1,3 +1,4 @@
+#Libreria de funciones de darly
 import requests, re
 
 def get_info(id):
