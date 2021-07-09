@@ -1,12 +1,12 @@
 # Darly Bot
 
-## Requisitos
+## Requisitos:
 
 >°Python3, pip y git
 
 >°Token de bot de telegram
 
-## Instalar y configurar el bot
+## Instalar y configurar el bot:
 
  Para descargar e instalar los archivos necesarios:
 
