@@ -2,8 +2,9 @@
 
 ## Requisitos
 
-°Tener instalado Python3, pip, git
-°ener un token de bot en telegram
+>°Tener instalado Python3, pip, git
+
+>°Tener un token de bot en telegram
 
 ## Instalar y configurar el bot
 
