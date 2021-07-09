@@ -1,9 +1,13 @@
 # Darly Bot
 
+## Requisitos
 
-## Instalar y configurar el bot?
+>Tener instalado Python3, pip, git
+>Tener un token de bot en telegram
 
- Para descargar  instalar los archivos necesarios:
+## Instalar y configurar el bot
+
+ Para descargar e instalar los archivos necesarios:
 
 ```
 git clone https://github.com/StaryDarkZly/darly_bot.git
