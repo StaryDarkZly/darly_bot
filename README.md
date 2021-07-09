@@ -1,14 +1,16 @@
 # Darly Bot
 
-##Como instalar y configurar el bot?
+## Como instalar y configurar el bot?
 ```
 git clone https://github.com/StaryDarkZly/darly_bot.git
 pip install -r requeriments.txt
 ```
-##Comandos:
+## Comandos:
 
 `/start`      - Saluda a Darly
+
 `/help`       - Obten informacion acerca de darly
+
 `/getinfo`    - Obten informacion de un jugador.
     ej: `/getinfo UYLN3FIW`  (sin usar el #)
 
