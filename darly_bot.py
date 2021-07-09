@@ -1,4 +1,4 @@
-#version:1.2 by StaryDark
+#version:1.2    Created: by StaryDark
 
 from telegram.ext import Updater, CommandHandler, Filters
 import functions
@@ -14,7 +14,6 @@ def start(update, context):
 
 def getinfo(update, context):
     """Obtiene info de un jugador"""
-
     id = " ".join(context.args)
     info = functions.get_info(id)
     update.message.reply_text(info)  
@@ -24,7 +23,9 @@ def list_miembros(update, context):
     clan = " ".join(context.args)
     miembros = functions.list_members(clan)
     update.message.reply_text(miembros)
+
 def help(update, context):
+    """Informacion acerca del bot"""
     helps = functions.help()
     context.bot.send_message(chat_id=update.effective_chat.id, text=helps)
 
@@ -33,6 +34,7 @@ start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 getinfo_handler = CommandHandler('getinfo', getinfo, pass_args=True)
 list_miembros_handler = CommandHandler('getmembers', list_miembros, pass_args=True)
+
 
 updater.dispatcher.add_handler(getinfo_handler)
 updater.dispatcher.add_handler(start_handler)
