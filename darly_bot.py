@@ -21,8 +21,8 @@ def getinfo(update, context):
 
 def list_miembros(update, context):
     """Obtiene la lista de miembros del clan"""
-
-    miembros = functions.list_members()
+    clan = " ".join(context.args)
+    miembros = functions.list_members(clan)
     update.message.reply_text(miembros)
 def help(update, context):
     helps = functions.help()
@@ -32,7 +32,7 @@ def help(update, context):
 start_handler = CommandHandler('start', start)
 help_handler = CommandHandler('help', help)
 getinfo_handler = CommandHandler('getinfo', getinfo, pass_args=True)
-list_miembros_handler = CommandHandler('getmembers', list_miembros)
+list_miembros_handler = CommandHandler('getmembers', list_miembros, pass_args=True)
 
 updater.dispatcher.add_handler(getinfo_handler)
 updater.dispatcher.add_handler(start_handler)

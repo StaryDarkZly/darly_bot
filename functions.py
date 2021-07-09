@@ -29,10 +29,10 @@ def get_info(id):
 
 
 
-def list_members():
+def list_members(clan):
     """Obtener la lista de miembros del clan valientes"""
     try:
-        url = ("https://www.clashofstats.com/es/clans/valientes-CLJGPRPV/members/")
+        url = (f"https://www.clashofstats.com/es/clans/valientes-{clan}/members/")
         html = requests.get(url, timeout=10)
     except:
         return "Clasf of Stats no esta disponible..."
