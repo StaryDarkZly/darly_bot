@@ -6,6 +6,8 @@ import threading
 
 
 token = open("credentials/token.txt").read()
+token = token[0:-1]
+
 updater = Updater(token=token, use_context=True)
 
 #Funciones de los comandos
