@@ -28,7 +28,7 @@ def get_info(id):
     info = (f"**Nickname:** {nickname}\nID: #{id}\n**Puesto:** {datos2[4]}\n**Clan:** {datos2[3]}\n**Pais:** {datos2[2]}\n**TH principal:** {datos2[0]}\n**TH Oscuro:** {datos2[1]} ")
     return info
 
-def list_members(clan):
+def list_members(clan, onlyname):
     """Obtener la lista de miembros del clan"""
     try:
         url = (f"https://www.clashofstats.com/es/clans/valientes-{clan}/members/")
@@ -48,13 +48,15 @@ def list_members(clan):
         for basura in borrar:
             member = member.replace(basura, "")
         members.append(member)
+    if onlyname == True:
+        return members
+    else:
+        for member in members:
+            count = count + 1
+            texto = (texto + "\n" + str(count) + ">|" + member)
 
-    for member in members:
-        count = count + 1
-        texto = (texto + "\n" + str(count) + ">|" + member)
-
-    texto = ("Los miembros actuales del clan son: \n\n" + texto)
-    return texto
+        texto = ("Los miembros actuales del clan son: \n\n" + texto)
+        return texto
 
 def help():
     help = ("Create by: StaryDark (Telegram:t.me/Dark_zly) \nVersion: 1.2")

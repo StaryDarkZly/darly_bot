@@ -31,3 +31,8 @@ pip install -r requeriments.txt
 
 `/getmembers` - Obten la lista de jugadores de un clan.
     ej: `/getinfo UYLN3FIW`  (sin usar el #)
+
+`newplayers` - Detectar a nuevos jugadores en tu clan
+    ej: `/newplayers UYLN3FIW`  (sin usar el #)
+
+`newplayersoff` - Parar la busqueda de nuevos jugadores
