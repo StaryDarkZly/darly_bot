@@ -2,7 +2,7 @@
 
 ## Requisitos:
 
->°Python3, pip y git
+>°Python3
 
 >°Token de bot de telegram
 
@@ -14,13 +14,16 @@
 git clone https://github.com/StaryDarkZly/darly_bot.git
 cd darly_bot
 pip install -r requeriments.txt
+python darly_bot.py
 ```
 
- Para configurar el bot:
+Luego te pedira el token de telegram y el id de tu clan.
 
-`echo tutoken > credentials/token.txt` (Reemplazar "tutoken" por tu token de bot)
 
 ## Comandos:
+
+Darly debe tener permisos de administrador o tendras que usar el @alias en cada comando
+
 
 `/start`      - Saluda a Darly.
 
@@ -30,9 +33,10 @@ pip install -r requeriments.txt
     ej: `/getinfo UYLN3FIW`  (sin usar el #)
 
 `/getmembers` - Obten la lista de jugadores de un clan.
-    ej: `/getinfo UYLN3FIW`  (sin usar el #)
 
 `newplayers` - Detectar a nuevos jugadores en tu clan
-    ej: `/newplayers UYLN3FIW`  (sin usar el #)
 
 `newplayersoff` - Parar la busqueda de nuevos jugadores
+
+## Bugs y Mejoras
+°Si un jugador o clan tiene algunos simbolos especiales en el nombre no dara un error

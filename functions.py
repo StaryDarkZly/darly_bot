@@ -1,10 +1,21 @@
 import requests, re
 
+
+def config():
+    print ("Bienvenido a la configuracion del bot :D\n\n")
+
+    token = input("Ingresa el token-->")
+    clan = input("Ingresa el id del clan (sin #) -->")
+    config = {"clan":clan, "token":token}
+    return config
+
+
 def get_info(id):
     """Obtener informacion de los jugadores del clan"""
     
     url = ("https://www.clashofstats.com/es/players/")
     
+
     try:
         html = requests.get(url + id + "/summary", timeout=10)
         html = (html.text)
@@ -25,7 +36,9 @@ def get_info(id):
         for delete in basura:
             dato = dato.replace(delete, "")
         datos2.append(dato)
-    info = (f"**Nickname:** {nickname}\nID: #{id}\n**Puesto:** {datos2[4]}\n**Clan:** {datos2[3]}\n**Pais:** {datos2[2]}\n**TH principal:** {datos2[0]}\n**TH Oscuro:** {datos2[1]} ")
+    playerlink = ("https://link.clashofclans.com/es?action=OpenPlayerProfile&tag=" + id)
+    info = (f'<b>Nickname:</b> <code>{nickname}</code>\n<b>ID:</b> <code>{id}</code> <a href="{playerlink}">PlayerLink</a> \n<b>Puesto:</b> <code>{datos2[4]}</code>\n<b>Clan:</b> <code>{datos2[3]}</code>\n<b>Pais:</b> <code>{datos2[2]}</code>\n<b>TH principal:</b> <code>{datos2[0]}</code>\n<b>TH Oscuro:</b> <code>{datos2[1]}</code>')
+
     return info
 
 def list_members(clan, onlyname):
@@ -59,5 +72,5 @@ def list_members(clan, onlyname):
         return texto
 
 def help():
-    help = ("Create by: StaryDark (Telegram:t.me/Dark_zly) \nVersion: 1.2")
+    help = ("Create by: StaryDark (Telegram:t.me/Dark_zly) \nVersion: 2.0")
     return help

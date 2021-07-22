@@ -1,31 +1,42 @@
-#version:1.4    Created: by StaryDark
+#version:2.0    Created: by StaryDark
 
 from telegram.ext import Updater, CommandHandler, Filters
-import functions, time
-import threading
+import telegram
+import threading, time, random, os
+import functions
 
+config = functions.config() 
 
-token = open("credentials/token.txt").read()
-token = token[0:-1]
+print ("Iniciando a darly....")
+os.system("clear")
+print ("\nDarly ha sido iniciado.")
 
-updater = Updater(token=token, use_context=True)
+updater = Updater(token=config["token"] , use_context=True)
 
 #Funciones de los comandos
 def start(update, context):
     """Saluda a Darly"""
-
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Hola mi nombre es Darly, estoy para servirles")
+    saludos = ("Hola mi nombre es Darly, estoy para servirles", "Si si, estoy aqui", "Holaa", "Usted diga y yo ejecuto", "Quien osa llamarme!","No puedes vivir sin mi xd")
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=telegram.ChatAction.TYPING)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=random.choice(saludos))
 
 def getinfo(update, context):
     """Obtiene info de un jugador"""
+    
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=telegram.ChatAction.TYPING)
     id = " ".join(context.args)
-    info = functions.get_info(id)
-    update.message.reply_text(info)  
+    if len(id) < 4:
+        update.message.reply_text("ID invalido... Debes darme el id de jugador para encontrarlo :b\n\nEj: /getinfo P99QYJJVC \nRecuerda no usar #")  
+    else:
+        info = functions.get_info(id)
+        context.bot.send_message(chat_id=update.effective_chat.id, text=info, disable_web_page_preview = True, parse_mode=telegram.ParseMode.HTML)
+        #context.bot.send_message(chat_id=update.effective_chat.id, text=info)
+        
 
-def list_miembros(update, context):
+def list_miembros(update, context, clan=config["clan"]):
     """Obtiene la lista de miembros del clan"""
-    clan = " ".join(context.args)
     miembros = functions.list_members(clan, onlyname=False)
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=telegram.ChatAction.TYPING)
     update.message.reply_text(miembros)
 
 def help(update, context):
@@ -33,8 +44,8 @@ def help(update, context):
     helps = functions.help()
     context.bot.send_message(chat_id=update.effective_chat.id, text=helps)
 
-isalive = [True, False] #primer argumento=parar el bucle   segundo argumento= evitar que se ejecuten mas bucles
-def searchplayers(history, clan, context, update, isalive):
+isalive = [False, False] #primer= Parar proceso segundo = Evitar mas de un subproceso
+def searchplayers(history, context, update, isalive, clan=config["clan"]):
     """ Detectar a nuevos jugadores del clan"""
     isalive[1] = True
     while isalive[0]:
@@ -49,11 +60,10 @@ def searchplayers(history, clan, context, update, isalive):
         print ("Esperando 5 minutos...")
         time.sleep(300)
 
-def newplayers(update, context, isalive=isalive):
+def newplayers(update, context, isalive=isalive, clan=config["clan"]):
     """Detectar a nuevos jugadores del clan """
-    clan = " ".join(context.args)
     history = functions.list_members(clan, onlyname=True)
-    whileplayers = threading.Thread(target=searchplayers, args=(history, clan, context, update, isalive))
+    whileplayers = threading.Thread(target=searchplayers, args=(history, context, update, isalive))
 
     if isalive[1]:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Ya estoy trabajando en ello...")
@@ -62,6 +72,7 @@ def newplayers(update, context, isalive=isalive):
         whileplayers.start()
 
 def newplayersoff(update, context, isalive=isalive):
+    isalive[0] = False
     isalive[0] = False
     context.bot.send_message(chat_id=update.effective_chat.id, text="Busqueda apagada")
 
