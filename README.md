@@ -38,5 +38,3 @@ Darly debe tener permisos de administrador o tendras que usar el @alias en cada 
 
 `newplayersoff` - Parar la busqueda de nuevos jugadores
 
-## Bugs y Mejoras
-°Si un jugador o clan tiene algunos simbolos especiales en el nombre no dara un error
