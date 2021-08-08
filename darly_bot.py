@@ -9,7 +9,7 @@ config = functions.config()
 
 print ("Iniciando a darly....")
 os.system("clear")
-print ("\nDarly ha sido iniciado.")
+print ("\nDarly ha sido iniciado...")
 
 updater = Updater(token=config["token"] , use_context=True)
 
