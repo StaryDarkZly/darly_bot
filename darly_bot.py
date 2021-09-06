@@ -5,10 +5,9 @@ import telegram
 import threading, time, random, os
 import functions
 
-config = functions.config() 
-
-print ("Iniciando a darly....")
-os.system("clear")
+print ("Iniciando a Darly....")
+config = functions.config()
+print (config)
 print ("\nDarly ha sido iniciado...")
 
 updater = Updater(token=config["token"] , use_context=True)
@@ -30,8 +29,7 @@ def getinfo(update, context):
     else:
         info = functions.get_info(id)
         context.bot.send_message(chat_id=update.effective_chat.id, text=info, disable_web_page_preview = True, parse_mode=telegram.ParseMode.HTML)
-        #context.bot.send_message(chat_id=update.effective_chat.id, text=info)
-        
+       
 
 def list_miembros(update, context, clan=config["clan"]):
     """Obtiene la lista de miembros del clan"""

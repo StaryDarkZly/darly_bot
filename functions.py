@@ -1,13 +1,49 @@
-import requests, re
+import requests, re, os, sys
 
 
 def config():
     print ("Bienvenido a la configuracion del bot :D\n\n")
+    loadconfig = input('Usar configuracion por defecto?(y/n)-->')
+    if loadconfig == 'y':
+        if os.path.exists('config.txt'):
+            fconfig = open('config.txt', 'r')
+            lineas = fconfig.readlines()
+            clan = lineas[0]
+            token = lineas[1]    
+            config = {"clan":clan, "token":token}
+            fconfig.close()
+            if os.name == 'nt':
+                os.system("cls")
+            else:
+                os.system("clear")
+            return config
 
-    token = input("Ingresa el token-->")
-    clan = input("Ingresa el id del clan (sin #) -->")
-    config = {"clan":clan, "token":token}
-    return config
+        else:
+            print('Configuracion no detectada')
+            print('Creando configuracion')
+            loadconfig = 'n'
+
+    if loadconfig == 'n':
+        token = input("Ingresa el token-->")
+        clan = input("Ingresa el id del clan (sin #) -->")
+
+    
+        config = {"clan":clan, "token":token}
+        
+        fconfig = open('config.txt', 'a')
+        clan = clan + '\n'
+        fconfig.write(clan)
+        fconfig.write(token)
+        fconfig.close()
+        if os.name == 'nt':
+            os.system("cls")
+        else:
+            os.system("clear")
+        return config
+        
+    else:
+        print ('Parametro no valido, intentalo de nuevo.')
+        sys.exit()
 
 
 def get_info(id):
