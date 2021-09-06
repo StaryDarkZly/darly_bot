@@ -17,7 +17,7 @@ pip install -r requeriments.txt
 python darly_bot.py
 ```
 
-Luego te pedira el token de telegram y el id de tu clan.
+La primera vez en ejecutar el bot te pedira el token y id del clan, luego se guardara por defecto, podras cargar esta config o cambiar los datos.
 
 
 ## Comandos:
@@ -32,9 +32,9 @@ Darly debe tener permisos de administrador o tendras que usar el @alias en cada 
 `/getinfo`    - Obten informacion de un jugador.
     ej: `/getinfo UYLN3FIW`  (sin usar el #)
 
-`/getmembers` - Obten la lista de jugadores de un clan.
+`/getmembers` - Obten la lista de jugadores de tu clan.
 
-`newplayers` - Detectar a nuevos jugadores en tu clan
+`/newplayers` - Detectar a nuevos jugadores en tu clan
 
-`newplayersoff` - Parar la busqueda de nuevos jugadores
+`/newplayersoff` - Parar la busqueda de nuevos jugadores
 
