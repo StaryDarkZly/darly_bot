@@ -1,5 +1,9 @@
 # Darly Bot
 <img src="image.jpg" alt="Avatar del Bot" width="300"/>
+
+Bot diseñado para obtener informacion sobre miembros de tu clan del juego Clash of Clans y mantenre un monitoreo de los jugadores que ingresan al clan en tiempo real mediante un bot de Telegram.
+
+
 ## Requisitos:
 
 >Python3
