@@ -1,5 +1,5 @@
 # Darly Bot
-
+![Avatar del Bot](image.jpg)
 ## Requisitos:
 
 >Python3
