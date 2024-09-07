@@ -2,11 +2,11 @@
 
 ## Requisitos:
 
->°Python3
+>Python3
 
->°Token de bot de telegram
+>Token de bot de telegram
 
-## Instalar y configurar el bot:
+## Instalacion y configuracion:
 
  Para descargar e instalar los archivos necesarios:
 
@@ -17,19 +17,20 @@ pip install -r requeriments.txt
 python darly_bot.py
 ```
 
-La primera vez en ejecutar el bot te pedira el token y id del clan, luego se guardara por defecto, podras cargar esta config o cambiar los datos.
+La primera vez en ejecutar el bot te pedira el token y id del clan, luego se guardara por defecto, podras cargar esta config o cambiar los datos en el archivo de configuracion creado.
 
 
-## Comandos:
+## Comandos Telegram:
 
 Darly debe tener permisos de administrador o tendras que usar el @alias en cada comando
 
 
-`/start`      - Saluda a Darly.
+`/start`      - Saluda a Darly y validar si esta activo.
 
 `/help`       - Obten informacion acerca de darly.
 
 `/getinfo`    - Obten informacion de un jugador.
+    
     ej: `/getinfo UYLN3FIW`  (sin usar el #)
 
 `/getmembers` - Obten la lista de jugadores de tu clan.
