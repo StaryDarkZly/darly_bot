@@ -1,5 +1,5 @@
 # Darly Bot
-![Avatar del Bot](image.jpg)
+<img src="image.jpg" alt="Avatar del Bot" width="300"/>
 ## Requisitos:
 
 >Python3
