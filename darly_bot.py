@@ -1,16 +1,23 @@
-#version:2.0    Created: by StaryDark
+#version:2.1  Created: by StaryDarkz (t.me/starydarkz)
 
-from telegram.ext import Updater, CommandHandler, Filters
+from telegram.ext import Updater, CommandHandler, filters
 import telegram
 import threading, time, random, os
 import functions
 
-print ("Iniciando a Darly....")
-config = functions.config()
-print (config)
+print ("[INFO] - Iniciando a Darly....")
+
+try:
+    config = functions.config()
+    print (config)
+except:
+    print ("[ERROR] - No se pudo cargar la configuracion")
+    os.sys.exit()
 print ("\nDarly ha sido iniciado...")
 
-updater = Updater(token=config["token"] , use_context=True)
+bot = telegram.Bot(token=config["token"])
+updater = Updater(token=config["token"], use_context=True)
+
 
 #Funciones de los comandos
 def start(update, context):
